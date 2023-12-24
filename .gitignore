@@ -1,0 +1,9 @@
+.buildozer/
+bin/
+buildozer.spec
+gender_age_detect/
+.venv/
+.vscode
+src/__pycache__/
+
+

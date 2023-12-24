@@ -1,0 +1,127 @@
+#:kivy 1.0.9
+#:import kivy kivy
+#:import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDCard kivymd.uix.card.MDCard
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDIconButton kivymd.uix.button.MDIconButton
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDToolbar kivymd.uix.toolbar.MDTopAppBar
+
+
+
+<WelcomeScreen>:
+    md_bg_color: 0,0,1,1
+    MDFloatLayout:
+        Image:
+            source: 'assets/medscan_bg.jpeg'
+            allow_stretch: True
+            keep_ratio:False
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: dp(300), dp(500)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            Image:
+                source: 'assets/medscan_logo.jpeg'
+                size: dp(100), dp(100)
+                pos_hint: {'center_x': 0.5}
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None,None
+                size: dp(300),dp(100)
+                elevation: 2
+                radius: [25,]
+                MDLabel:
+                    text: '[b][color=1,1,0,1]Welcome to the App![/color][/b]'
+                    markup: True
+                    font_size: dp(30)
+                    halign:'center'
+                    pos_hint: {'center_x': 0.5}
+            MDRaisedButton:
+                text: 'Go to login'
+                on_release: root.login_screen()
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {'center_x': 0.5}
+                pos: dp(100), dp(100)
+                elevation_normal: 0
+
+<MainScreen>:
+    md_bg_color: 0,1,0,1
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Main Screen"
+            left_action_items: [["arrow-left", lambda x: root.switch_screen()]]
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: dp(10)
+            spacing: dp(10)
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.2
+                MDLabel:
+                    text: 'User Info:'
+                    valign: 'center'
+                    halign: 'center'
+                    font_size: dp(20)
+                    font_style: 'H4'
+                    theme_text_color: 'Secondary'
+                    text_color: 1,0,1,1
+                    size_hint: None,None    
+                    pos_hint: {'center_x': 0.5}
+                    height: self.texture_size[1]
+                MDLabel:
+                    id: user_age
+                    text: root.user_age
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: dp(14)
+                MDLabel:
+                    id: user_gender
+                    text: root.user_gender
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: dp(14)
+            Image:
+                id: user_image
+                source: 'last_frame.png'
+                size_hint: None,None
+                height: dp(200)
+                width: dp(200) 
+                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDBoxLayout:
+                    padding: dp(10)
+                    MDLabel:
+                        id: voice_input
+                        text: root.voice_input_text
+                        halign: 'center'
+                        valign: 'middle'
+                        size_hint_y: 0.3
+                        size_hint_x: 0.8
+                        font_size: dp(30)
+                        font_style: 'H4'
+                        font_name: '/home/sol/.fonts/RobotoMono-Regular.ttf'
+                MDFloatingActionButton:
+                    icon: "microphone"
+                    on_release: root.voice_recognition()
+                    size_hint: None,None
+                    size: dp(56), dp(56)
+                    pos_hint: {'center_x':.5}
+                    elevation_normal: 0
+                MDRaisedButton:
+                    text: 'Start Face Recognition'
+                    on_release: root.switch_to_camera()
+                    pos_hint: {'center_x': .5}
+                    size: dp(150), dp(50)
+                    elevation_normal: 0
+                MDLabel:
+                    id: voice_label
+                    text: 'Voice Recognition Result'
+                    halign: 'center'
+ 
