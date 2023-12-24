@@ -1,7 +1,0 @@
-Cython==0.29.33
-Kivy==2.2.1
-kivymd==1.1.1
-opencv-python
-beautifulsoup4
-SpeechRecognition
-selenium
